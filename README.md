@@ -26,6 +26,8 @@
 | :------------ | -----:|
 | Dark mode | :heavy_check_mark:|
 | Light mode | :heavy_check_mark:|
+| Dont allow to add workouts if any of the fields are empty | :heavy_check_mark:|
+| Add Badge to "List of Workouts" and show current number of workouts saved | :heavy_check_mark:|
 | Select Flatlist items using Long Press | :heavy_check_mark:|
 | Delete selected items | :heavy_check_mark:|
 | Remove last input from text input fields if errorFound === true | :heavy_check_mark:|
