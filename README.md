@@ -34,3 +34,4 @@
 | Categorize exercises in seqmented buttons | :heavy_check_mark:|
 | Show "Dropdown" list of Chips containing specified exercises | :heavy_check_mark:|
 | Add Total time spent at home, total sets performed at gym and total distance outdoors for "List of Workouts" View | :heavy_check_mark:|
+| Format date | :heavy_check_mark:|
