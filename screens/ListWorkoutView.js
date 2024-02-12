@@ -1,49 +1,44 @@
 import { useContext } from "react";
 import { FlatList, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Card, Chip, Icon, Surface, Text } from "react-native-paper";
+import { Card, Chip, Icon, Text } from "react-native-paper";
 
 import Style from "../styles/Style";
 
 import {
-  DeleteWorkoutsContext,
+  SelectedIdsContext,
   SettingsContext,
   ThemeContext,
   WorkoutsContext,
 } from "../contexts/Contexts";
 
+import {
+  CalculateTotalDistance,
+  CalculateTotalSets,
+  CalculateTotalTimeSpent,
+  ConvetMinutesToHours,
+  FormatDate,
+} from "../functions/HelperFunctions";
+
+import { darkColors, lightColors } from "../styles/ColorScheme";
+
 export default function ListWorkoutView() {
   // Contexts
   const { workouts } = useContext(WorkoutsContext);
   const { units } = useContext(SettingsContext);
-  const { selectedIds, setSelectedIds } = useContext(DeleteWorkoutsContext);
-
+  const { selectedIds, setSelectedIds } = useContext(SelectedIdsContext);
   const { isDarkModeOn } = useContext(ThemeContext);
-
-  const formatDate = (date) => {
-    // Convert string date to date obj
-    newDateObject = new Date(date);
-
-    let formattedDate =
-      newDateObject.getDate() +
-      "." +
-      Number(newDateObject.getMonth() + 1) +
-      "." +
-      newDateObject.getFullYear();
-
-    return formattedDate;
-  };
 
   // Sort workouts by creating new dateobject "dateObject"
   // compaire the dates to return either negative or positive value
-  const workoutsSortedByDate = workouts
+  const WorkoutsSortedByDate = workouts
     .map((obj) => {
       return { ...obj, dateObject: new Date(obj.date) };
     })
     .sort((a, b) => b.dateObject - a.dateObject);
 
   // Render workout items in cards
-  const renderWorkoutItems = ({ item }) => {
+  const RenderWorkoutItems = ({ item }) => {
     // Find icon name from workout objects
     const LeftContent = (props) => (
       <Icon {...props} source={item.icon} style={Style.exerciseIcon} />
@@ -69,7 +64,11 @@ export default function ListWorkoutView() {
         elevation={selectedIds.includes(item.id) ? 5 : 0}
         style={[
           Style.exerciseCard,
-          { borderColor: isDarkModeOn ? "#ffffff" : "#000000" },
+          {
+            borderColor: isDarkModeOn
+              ? darkColors.colors.primary
+              : lightColors.colors.primary,
+          },
         ]}
         onLongPress={() => {
           if (selectedIds.includes(item.id)) {
@@ -83,7 +82,7 @@ export default function ListWorkoutView() {
       >
         <Card.Title
           title={item.selectedSport}
-          subtitle={formatDate(item.date)}
+          subtitle={FormatDate(item.date)}
           left={LeftContent}
           right={RightContent}
         />
@@ -122,8 +121,8 @@ export default function ListWorkoutView() {
         </View>
         <View style={Style.workoutsFlatlist}>
           <FlatList
-            data={workoutsSortedByDate}
-            renderItem={renderWorkoutItems}
+            data={WorkoutsSortedByDate}
+            renderItem={RenderWorkoutItems}
             keyExtractor={(item) => item.id}
             extraData={selectedIds}
           />
@@ -132,42 +131,3 @@ export default function ListWorkoutView() {
     </SafeAreaProvider>
   );
 }
-
-const CalculateTotalDistance = (workoutsArray, units) => {
-  const totalDistance = workoutsArray
-    // Filter outdoor locations and calculate total distance
-    .filter(
-      (locationOutdoors) => locationOutdoors.exerciseLocation === "outdoors"
-    )
-    .reduce((result, { distance }) => (result += Number(distance)), 0);
-  return units === "km"
-    ? totalDistance + " km"
-    : (totalDistance / 1.609344).toFixed(2) + " mi";
-};
-
-const CalculateTotalSets = (workoutsArray) => {
-  const totalSets = workoutsArray
-    // Filter gym workouts and calculate total sets
-    .filter((locationGym) => locationGym.exerciseLocation === "gym")
-    .reduce((result, { numOfSets }) => (result += Number(numOfSets)), 0);
-
-  return totalSets + " sets";
-};
-
-const ConvetMinutesToHours = (minutes) => {
-  return Math.floor(minutes / 60) + " h " + (minutes % 60) + " min";
-};
-
-const CalculateTotalTimeSpent = (workoutsArray) => {
-  // Calculate total time spent at home
-  const totalTimeSpentAtHome = workoutsArray
-    .filter((locationHome) => locationHome.exerciseLocation === "home")
-    .reduce((result, { duration }) => (result += Number(duration)), 0);
-
-  return (
-    Math.floor(totalTimeSpentAtHome / 60) +
-    " h " +
-    (totalTimeSpentAtHome % 60) +
-    " min"
-  );
-};

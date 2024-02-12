@@ -6,7 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import Navigation from "./components/Navigation";
 
 import {
-  DeleteWorkoutsContext,
+  SelectedIdsContext,
   SportSelectionContext,
   WorkoutsContext,
   SettingsContext,
@@ -40,7 +40,7 @@ export default function App() {
 
   return (
     <ThemeContext.Provider value={{ isDarkModeOn, setIsDarkModeOn }}>
-      <DeleteWorkoutsContext.Provider value={{ selectedIds, setSelectedIds }}>
+      <SelectedIdsContext.Provider value={{ selectedIds, setSelectedIds }}>
         <SettingsContext.Provider value={{ units, setUnits }}>
           <SportSelectionContext.Provider
             value={{ selectedSport, setSelectedSports, icon, setSelectedIcon }}
@@ -55,7 +55,7 @@ export default function App() {
             </WorkoutsContext.Provider>
           </SportSelectionContext.Provider>
         </SettingsContext.Provider>
-      </DeleteWorkoutsContext.Provider>
+      </SelectedIdsContext.Provider>
     </ThemeContext.Provider>
   );
 }

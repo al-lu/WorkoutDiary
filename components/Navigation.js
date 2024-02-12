@@ -16,6 +16,7 @@ import { darkColors, lightColors } from "../styles/ColorScheme";
 const Navigation = () => {
   const { isDarkModeOn } = useContext(ThemeContext);
   const { workouts } = useContext(WorkoutsContext);
+
   const Tab = createBottomTabNavigator();
 
   return (

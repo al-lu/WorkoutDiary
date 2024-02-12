@@ -43,7 +43,30 @@ export default Style = StyleSheet.create({
     color: "#000000",
   },
 
-  calendarmodal: {},
+  // Calendar
+  calendar: {
+    backgroundColor: "#ffffff",
+    calendarBackground: "#ffffff",
+    textSectionTitleColor: "#363636",
+    textSectionTitleDisabledColor: "#d9e1e8",
+    selectedDayBackgroundColor: "#000000",
+    selectedDayTextColor: "#ffffff",
+    todayTextColor: "#ef5858",
+    dayTextColor: "#2d4150",
+    textDisabledColor: "#d9e1e8",
+    arrowColor: "#000000",
+    monthTextColor: "#000000",
+    textDayFontFamily: "monospace",
+    textMonthFontFamily: "monospace",
+    textDayHeaderFontFamily: "monospace",
+    textTodayFontWeight: "bold",
+    textDayFontWeight: "300",
+    textMonthFontWeight: "bold",
+    textDayHeaderFontWeight: "300",
+    textDayFontSize: 16,
+    textMonthFontSize: 16,
+    textDayHeaderFontSize: 16,
+  },
 
   // Sportchips
   sportChip: {

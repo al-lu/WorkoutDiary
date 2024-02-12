@@ -30,6 +30,8 @@ import {
 
 import { darkColors, lightColors } from "../styles/ColorScheme";
 
+import { FormatDate, VerifyInput } from "../functions/HelperFunctions";
+
 export default function AddWorkoutView() {
   // Contexts
   const { workouts, setWorkouts } = useContext(WorkoutsContext);
@@ -52,43 +54,8 @@ export default function AddWorkoutView() {
     setDate(day);
   };
 
-  const formatDate = (date) => {
-    // Convert string date to date obj
-    newDateObject = new Date(date);
-
-    let formattedDate =
-      newDateObject.getDate() +
-      "." +
-      Number(newDateObject.getMonth() + 1) +
-      "." +
-      newDateObject.getFullYear();
-
-    return formattedDate;
-  };
-
-  // User input error handling
-  const verifyInput = (input) => {
-    var errorText;
-    var errorHeading;
-
-    if (input < 0 || input === "-") {
-      errorFound = true;
-      errorHeading = "Negative input";
-      errorText = "Only positive numbers are allowed";
-      // Alert.alert("Negative input", "Only positive numbers are allowed");
-    } else if (isNaN(input)) {
-      errorFound = true;
-      errorHeading = "Invalid input";
-      errorText = "Only numbers are allowed";
-      // Alert.alert("Invalid input", "Only numbers are allowed");
-    } else {
-      errorFound = false;
-    }
-    return { errorFound, errorHeading, errorText };
-  };
-
   // Add workout to context
-  const addWorkout = () => {
+  const AddWorkout = () => {
     // Create id based on the largest ID value that is found from the array of objects
     // This is done because deleting items from the WorkoutList gets also rid of the corresponding ids
     // Just to be sure pick the largest number and add 1 to it
@@ -108,7 +75,8 @@ export default function AddWorkoutView() {
             selectedSport,
             icon,
           }
-        : {
+        : // Because Gym and Home locations don't measure distance but instead use number of sets
+          {
             id,
             exerciseLocation,
             numOfSets,
@@ -130,7 +98,7 @@ export default function AddWorkoutView() {
   };
 
   // Disable "Add Workout" button if any fields are empty
-  const isButtonDisabled = (
+  const IsButtonDisabled = (
     exerciseLocation,
     distance,
     duration,
@@ -138,7 +106,7 @@ export default function AddWorkoutView() {
     numOfSets,
     selectedSport
   ) => {
-    var buttonDisabled;
+    let buttonDisabled;
     switch (exerciseLocation) {
       case "":
         buttonDisabled = true;
@@ -221,11 +189,11 @@ export default function AddWorkoutView() {
                 value={distance}
                 maxLength={10}
                 onChangeText={(distance) => {
-                  !verifyInput(distance).errorFound
+                  !VerifyInput(distance).errorFound
                     ? setDistance(distance)
                     : Alert.alert(
-                        verifyInput(distance).errorHeading,
-                        verifyInput(distance).errorText
+                        VerifyInput(distance).errorHeading,
+                        VerifyInput(distance).errorText
                       );
                 }}
               />
@@ -239,11 +207,11 @@ export default function AddWorkoutView() {
                 value={numOfSets}
                 maxLength={10}
                 onChangeText={(numOfSets) => {
-                  !verifyInput(numOfSets).errorFound
+                  !VerifyInput(numOfSets).errorFound
                     ? setNumOfSets(numOfSets)
                     : Alert.alert(
-                        verifyInput(numOfSets).errorHeading,
-                        verifyInput(numOfSets).errorText
+                        VerifyInput(numOfSets).errorHeading,
+                        VerifyInput(numOfSets).errorText
                       );
                 }}
               />
@@ -257,11 +225,11 @@ export default function AddWorkoutView() {
             value={duration}
             maxLength={10}
             onChangeText={(duration) => {
-              !verifyInput(duration).errorFound
+              !VerifyInput(duration).errorFound
                 ? setDuration(duration)
                 : Alert.alert(
-                    verifyInput(duration).errorHeading,
-                    verifyInput(duration).errorText
+                    VerifyInput(duration).errorHeading,
+                    VerifyInput(duration).errorText
                   );
             }}
           />
@@ -271,15 +239,7 @@ export default function AddWorkoutView() {
                 onDayPress={(day) => {
                   setDateSelected(day.dateString);
                 }}
-                theme={{
-                  backgroundColor: "#ffffff",
-                  calendarBackground: "#ffffff",
-                  textSectionTitleColor: "#b6c1cd",
-                  selectedDayBackgroundColor: "#18d593",
-                  selectedDayTextColor: "#18d593",
-                  todayTextColor: "#18d593",
-                  dayTextColor: "#000000",
-                }}
+                theme={Style.calendar}
                 markedDates={{
                   [date]: {
                     selected: true,
@@ -295,7 +255,7 @@ export default function AddWorkoutView() {
                 style={Style.selectDateBtn}
                 icon={"calendar"}
               >
-                {date ? formatDate(date) : "Select Date"}
+                {date ? FormatDate(date) : "Select Date"}
               </Button>
             </Pressable>
           )}
@@ -309,7 +269,7 @@ export default function AddWorkoutView() {
                     : lightColors.colors.buttonEnabledColor
                 }
                 style={Style.addWorkoutBtn}
-                disabled={isButtonDisabled(
+                disabled={IsButtonDisabled(
                   exerciseLocation,
                   distance,
                   duration,
@@ -317,7 +277,7 @@ export default function AddWorkoutView() {
                   numOfSets,
                   selectedSport
                 )}
-                onPress={addWorkout}
+                onPress={AddWorkout}
               >
                 <Text style={Style.addWorkoutBtnText}>Add</Text>
               </Button>

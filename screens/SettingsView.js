@@ -6,6 +6,7 @@ import { RadioButton, Switch, Text } from "react-native-paper";
 import { SettingsContext, ThemeContext } from "../contexts/Contexts";
 import { DistanceUnitsData } from "../data/DistanceUnitsData";
 import Style from "../styles/Style";
+import { darkColors, lightColors } from "../styles/ColorScheme";
 
 export default function SettingsView() {
   // Contexts
@@ -19,7 +20,11 @@ export default function SettingsView() {
       <View
         style={[
           Style.settingsMainViewContainer,
-          { borderColor: isDarkModeOn ? "#ffffff" : "#000000" },
+          {
+            borderColor: isDarkModeOn
+              ? darkColors.colors.primary
+              : lightColors.colors.primary,
+          },
         ]}
       >
         <Text style={Style.settingsUnitText}>Units</Text>
@@ -41,7 +46,11 @@ export default function SettingsView() {
       <View
         style={[
           Style.toggleSwitchContainer,
-          { borderColor: isDarkModeOn ? "#ffffff" : "#000000" },
+          {
+            borderColor: isDarkModeOn
+              ? darkColors.colors.primary
+              : lightColors.colors.primary,
+          },
         ]}
       >
         <Text style={Style.toggleDarkModeText}>Dark mode</Text>

@@ -20,7 +20,7 @@ const SportChips = ({ location }) => {
   let workouts = WorkoutsOptionsData;
 
   // Add sport type and icon to context
-  const addSport = (sportType, selectedicon) => {
+  const AddSport = (sportType, selectedicon) => {
     setSelectedSports(sportType);
     setSelectedIcon(selectedicon);
   };
@@ -34,7 +34,7 @@ const SportChips = ({ location }) => {
             <Chip
               style={Style.sportChip}
               mode="outlined"
-              onPress={() => addSport(option.workout, option.icon)}
+              onPress={() => AddSport(option.workout, option.icon)}
               selected={selectedSport === option.workout}
             >
               {option.workout}
@@ -50,7 +50,7 @@ const SportChips = ({ location }) => {
             <Chip
               style={Style.sportChip}
               mode="outlined"
-              onPress={() => addSport(option.workout, option.icon)}
+              onPress={() => AddSport(option.workout, option.icon)}
               selected={selectedSport === option.workout}
             >
               {option.workout}
@@ -66,7 +66,7 @@ const SportChips = ({ location }) => {
             <Chip
               style={Style.sportChip}
               mode="outlined"
-              onPress={() => addSport(option.workout, option.icon)}
+              onPress={() => AddSport(option.workout, option.icon)}
               selected={selectedSport === option.workout}
             >
               {option.workout}

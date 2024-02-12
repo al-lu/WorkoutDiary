@@ -6,8 +6,7 @@ const SportSelectionContext = createContext();
 
 const SettingsContext = createContext();
 
-// SelectedIdsContext
-const DeleteWorkoutsContext = createContext();
+const SelectedIdsContext = createContext();
 
 const ThemeContext = createContext();
 
@@ -15,6 +14,6 @@ export {
   WorkoutsContext,
   SettingsContext,
   SportSelectionContext,
-  DeleteWorkoutsContext,
+  SelectedIdsContext,
   ThemeContext,
 };
