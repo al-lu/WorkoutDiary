@@ -12,6 +12,7 @@ import {
   Modal,
   Portal,
   SegmentedButtons,
+  Snackbar,
   TextInput,
 } from "react-native-paper";
 import { Calendar } from "react-native-calendars";
@@ -30,7 +31,11 @@ import {
 
 import { darkColors, lightColors } from "../styles/ColorScheme";
 
-import { FormatDate, VerifyInput } from "../functions/HelperFunctions";
+import {
+  FormatDate,
+  ShowToast,
+  VerifyInput,
+} from "../functions/HelperFunctions";
 
 export default function AddWorkoutView() {
   // Contexts
@@ -95,6 +100,8 @@ export default function AddWorkoutView() {
     setDate("");
     setSelectedSports("");
     setSelectedIcon("");
+
+    ShowToast();
   };
 
   // Disable "Add Workout" button if any fields are empty
