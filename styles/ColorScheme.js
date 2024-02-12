@@ -5,7 +5,7 @@ const lightColors = StyleSheet.create({
     primary: "#000000",
     secondaryContainer: "#b4e0c4",
     error: "#ba1a1a",
-    background: "e8e8e8",
+    background: "#e8e8e8",
     surface: "#bebedd",
     onSurface: "#000000",
     surfaceVariant: "#cecbd0",
