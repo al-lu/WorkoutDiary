@@ -62,12 +62,10 @@ const VerifyInput = (input) => {
     errorFound = true;
     errorHeading = "Negative input";
     errorText = "Only positive numbers are allowed";
-    // Alert.alert("Negative input", "Only positive numbers are allowed");
   } else if (isNaN(input)) {
     errorFound = true;
     errorHeading = "Invalid input";
     errorText = "Only numbers are allowed";
-    // Alert.alert("Invalid input", "Only numbers are allowed");
   } else {
     errorFound = false;
   }

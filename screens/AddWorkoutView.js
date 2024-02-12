@@ -12,7 +12,6 @@ import {
   Modal,
   Portal,
   SegmentedButtons,
-  Snackbar,
   TextInput,
 } from "react-native-paper";
 import { Calendar } from "react-native-calendars";
