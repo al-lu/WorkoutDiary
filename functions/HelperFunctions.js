@@ -57,7 +57,6 @@ const CalculateTotalTimeSpent = (workoutsArray) => {
 const VerifyInput = (input) => {
   let errorText;
   let errorHeading;
-  console.log(input);
   if (input < 0 || input === "-") {
     errorFound = true;
     errorHeading = "Negative input";
