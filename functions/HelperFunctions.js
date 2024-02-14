@@ -57,7 +57,7 @@ const CalculateTotalTimeSpent = (workoutsArray) => {
 const VerifyInput = (input) => {
   let errorText;
   let errorHeading;
-
+  console.log(input);
   if (input < 0 || input === "-") {
     errorFound = true;
     errorHeading = "Negative input";
@@ -66,6 +66,10 @@ const VerifyInput = (input) => {
     errorFound = true;
     errorHeading = "Invalid input";
     errorText = "Only numbers are allowed";
+  } else if (input.includes(".")) {
+    errorFound = true;
+    errorHeading = "Numeric error";
+    errorText = "Only integer numbers are allowed";
   } else {
     errorFound = false;
   }

@@ -13,7 +13,7 @@ const SportChips = ({ location }) => {
     SportSelectionContext
   );
 
-  // Which Cards to show
+  // Which Chips to show
   let content;
 
   // Workout options data
