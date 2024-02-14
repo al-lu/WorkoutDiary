@@ -29,6 +29,7 @@ _Tested with Pixel 6a (physical device) and Pixel_7_API_30 (emulator)_
 | Dark mode                                                                                                         | :heavy_check_mark: |
 | Light mode                                                                                                        | :heavy_check_mark: |
 | Show toast when workout is added successfully                                                                     | :heavy_check_mark: |
+| Only allow whole numbers without decimal point in input fields                                                                     | :heavy_check_mark: |
 | Dont allow to add workouts if any of the fields are empty                                                         | :heavy_check_mark: |
 | Add Badge to "List of Workouts" and show current number of workouts saved                                         | :heavy_check_mark: |
 | Select Flatlist items using Long Press                                                                            | :heavy_check_mark: |
