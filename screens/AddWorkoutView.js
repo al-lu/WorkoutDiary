@@ -63,12 +63,12 @@ export default function AddWorkoutView() {
     // Create id based on the largest ID value that is found from the array of objects
     // This is done because deleting items from the WorkoutList gets also rid of the corresponding ids
     // Just to be sure pick the largest number and add 1 to it
-    id = workouts.reduce((acc, value) => {
+    let id = workouts.reduce((acc, value) => {
       acc = acc > value.id ? acc : value.id;
       return acc + 1;
     }, 0);
 
-    selectedExercise =
+    let selectedExercise =
       exerciseLocation === "outdoors"
         ? {
             id,
