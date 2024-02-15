@@ -196,7 +196,7 @@ export default function AddWorkoutView() {
                 maxLength={10}
                 onChangeText={(distance) => {
                   !VerifyInput(distance).errorFound
-                    ? setDistance(distance)
+                    ? setDistance(distance.trim())
                     : Alert.alert(
                         VerifyInput(distance).errorHeading,
                         VerifyInput(distance).errorText
@@ -214,7 +214,7 @@ export default function AddWorkoutView() {
                 maxLength={10}
                 onChangeText={(numOfSets) => {
                   !VerifyInput(numOfSets).errorFound
-                    ? setNumOfSets(numOfSets)
+                    ? setNumOfSets(numOfSets.trim())
                     : Alert.alert(
                         VerifyInput(numOfSets).errorHeading,
                         VerifyInput(numOfSets).errorText
@@ -232,7 +232,7 @@ export default function AddWorkoutView() {
             maxLength={10}
             onChangeText={(duration) => {
               !VerifyInput(duration).errorFound
-                ? setDuration(duration)
+                ? setDuration(duration.trim())
                 : Alert.alert(
                     VerifyInput(duration).errorHeading,
                     VerifyInput(duration).errorText
