@@ -1,5 +1,5 @@
 const Images = {
-  logo: require("../assets/Logo.png"),
+  success: require("../assets/Success.png"),
   warning: require("../assets/Warning.png"),
 };
 

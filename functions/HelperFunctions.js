@@ -81,7 +81,7 @@ const VerifyInput = (input, isFloatAllowed) => {
       if (input.split(".")[1].length > 2) {
         errorFound = true;
         errorHeading = "Decimal error";
-        errorText = "Only numbers with two decimal points are allowed";
+        errorText = "Only numbers with two decimal places are allowed";
       } else {
         errorFound = false;
       }

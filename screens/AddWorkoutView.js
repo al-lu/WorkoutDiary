@@ -102,7 +102,7 @@ export default function AddWorkoutView() {
     setSelectedSports("");
     setSelectedIcon("");
 
-    ShowToast("Workout added", "LONG", isDarkModeOn, Images.logo);
+    ShowToast("Workout added", "LONG", isDarkModeOn, Images.success);
   };
 
   // Disable "Add Workout" button if any fields are empty
