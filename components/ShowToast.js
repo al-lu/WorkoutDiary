@@ -4,21 +4,17 @@ import Style from "../styles/Style";
 import { Icon } from "react-native-paper";
 import { darkColors, lightColors } from "../styles/ColorScheme";
 
-const ShowToast = (message, duration, isDarkMode) => {
+const ShowToast = (message, duration, isDarkMode, iconName) => {
   return (
-    <View style={Style.toastContainer}>
+    <View>
       {Toast.show(
         <>
-          <Icon
-            style={Style.toastIcon}
-            size={20}
-            source={require("../assets/Logo.png")}
-          />
+          <Icon style={Style.toastIcon} size={20} source={iconName} />
           {` ${message}`}
         </>,
         {
           duration: Toast.durations[duration.toUpperCase()],
-          position: Toast.positions.BOTTOM,
+          position: Toast.positions.BOTTOM - 30,
           shadow: true,
           animation: true,
           hideOnPress: true,

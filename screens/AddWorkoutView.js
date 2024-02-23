@@ -32,6 +32,7 @@ import { darkColors, lightColors } from "../styles/ColorScheme";
 
 import { FormatDate, VerifyInput } from "../functions/HelperFunctions";
 import ShowToast from "../components/ShowToast";
+import Images from "../components/Images";
 
 export default function AddWorkoutView() {
   // Contexts
@@ -101,7 +102,7 @@ export default function AddWorkoutView() {
     setSelectedSports("");
     setSelectedIcon("");
 
-    ShowToast("Workout added", "LONG", isDarkModeOn);
+    ShowToast("Workout added", "LONG", isDarkModeOn, Images.logo);
   };
 
   // Disable "Add Workout" button if any fields are empty
@@ -288,6 +289,23 @@ export default function AddWorkoutView() {
                   numOfSets,
                   selectedSport
                 )}
+                onTouchStart={() =>
+                  IsButtonDisabled(
+                    exerciseLocation,
+                    distance,
+                    duration,
+                    date,
+                    numOfSets,
+                    selectedSport
+                  )
+                    ? ShowToast(
+                        "All fields are required",
+                        "SHORT",
+                        isDarkModeOn,
+                        Images.warning
+                      )
+                    : null
+                }
                 onPress={AddWorkout}
               >
                 <Text style={Style.addWorkoutBtnText}>Add</Text>

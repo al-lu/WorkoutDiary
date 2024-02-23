@@ -37,6 +37,8 @@ export default Style = StyleSheet.create({
     height: 100,
     width: 100,
     borderRadius: 100,
+    marginTop: 10,
+    marginBottom: 10,
   },
   addWorkoutBtnText: {
     fontSize: 20,
