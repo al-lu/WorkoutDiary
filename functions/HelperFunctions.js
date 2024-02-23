@@ -67,7 +67,7 @@ const CalculateTotalTimeSpent = (workoutsArray) => {
 };
 
 // User input error handling
-const VerifyInput = (input) => {
+const VerifyInput = (input, isFloatAllowed) => {
   let errorText;
   let errorHeading;
   if (input < 0 || input === "-") {
@@ -78,10 +78,18 @@ const VerifyInput = (input) => {
     errorFound = true;
     errorHeading = "Invalid input";
     errorText = "Only numbers are allowed";
-  } else if (input.includes(".") && input.split(".")[1].length > 2) {
-    errorFound = true;
-    errorHeading = "Decimal error";
-    errorText = "Only numbers with two decimal points are allowed";
+  } else if (input.includes(".")) {
+    if (isFloatAllowed) {
+      if (input.split(".")[1].length > 2) {
+        errorFound = true;
+        errorHeading = "Decimal error";
+        errorText = "Only numbers with two decimal points are allowed";
+      }
+    } else {
+      errorFound = true;
+      errorHeading = "Integer error";
+      errorText = "Only whole numbers are allowed";
+    }
   } else {
     errorFound = false;
   }

@@ -199,11 +199,12 @@ export default function AddWorkoutView() {
                 value={distance}
                 maxLength={10}
                 onChangeText={(distance) => {
-                  !VerifyInput(distance).errorFound
+                  !VerifyInput(distance, (isFloatAllowed = true)).errorFound
                     ? setDistance(distance.trim())
                     : Alert.alert(
-                        VerifyInput(distance).errorHeading,
-                        VerifyInput(distance).errorText
+                        VerifyInput(distance, (isFloatAllowed = true))
+                          .errorHeading,
+                        VerifyInput(distance, (isFloatAllowed = true)).errorText
                       );
                 }}
               />
@@ -217,11 +218,13 @@ export default function AddWorkoutView() {
                 value={numOfSets}
                 maxLength={10}
                 onChangeText={(numOfSets) => {
-                  !VerifyInput(numOfSets).errorFound
+                  !VerifyInput(numOfSets, (isFloatAllowed = false)).errorFound
                     ? setNumOfSets(numOfSets.trim())
                     : Alert.alert(
-                        VerifyInput(numOfSets).errorHeading,
-                        VerifyInput(numOfSets).errorText
+                        VerifyInput(numOfSets, (isFloatAllowed = false))
+                          .errorHeading,
+                        VerifyInput(numOfSets, (isFloatAllowed = false))
+                          .errorText
                       );
                 }}
               />
@@ -235,11 +238,12 @@ export default function AddWorkoutView() {
             value={duration}
             maxLength={10}
             onChangeText={(duration) => {
-              !VerifyInput(duration).errorFound
+              !VerifyInput(duration, (isFloatAllowed = false)).errorFound
                 ? setDuration(duration.trim())
                 : Alert.alert(
-                    VerifyInput(duration).errorHeading,
-                    VerifyInput(duration).errorText
+                    VerifyInput(duration, (isFloatAllowed = false))
+                      .errorHeading,
+                    VerifyInput(duration, (isFloatAllowed = false)).errorText
                   );
             }}
           />
