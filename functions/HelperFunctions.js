@@ -20,9 +20,12 @@ const CalculateTotalDistance = (workoutsArray, units) => {
     .filter(
       (locationOutdoors) => locationOutdoors.exerciseLocation === "outdoors"
     )
-    .reduce((result, { distance }) => (result += Number(distance)), 0);
+    .reduce(
+      (result, { traveledDistance }) => (result += Number(traveledDistance)),
+      0
+    );
   return units === "km"
-    ? totalDistance + " km"
+    ? totalDistance.toFixed(2) + " km"
     : (totalDistance / 1.609344).toFixed(2) + " mi";
 };
 
@@ -35,7 +38,20 @@ const CalculateTotalSets = (workoutsArray) => {
   return totalSets + " sets";
 };
 
-const ConvetMinutesToHours = (minutes) => {
+const ParceNumber = (num) => {
+  let output;
+  console.log("OUTPUT: " + num);
+  if (Number.isInteger(Number(num))) {
+    output = Number(num).toFixed(0);
+    console.log("RES1: " + output);
+  } else {
+    output = Number(num).toFixed(2);
+    console.log("RES2: " + output);
+  }
+  return output;
+};
+
+const ConvertMinutesToHours = (minutes) => {
   return Math.floor(minutes / 60) + " h " + (minutes % 60) + " min";
 };
 
@@ -65,10 +81,10 @@ const VerifyInput = (input) => {
     errorFound = true;
     errorHeading = "Invalid input";
     errorText = "Only numbers are allowed";
-  } else if (input.includes(".")) {
+  } else if (input.includes(".") && input.split(".")[1].length > 2) {
     errorFound = true;
-    errorHeading = "Numeric error";
-    errorText = "Only integer numbers are allowed";
+    errorHeading = "Decimal error";
+    errorText = "Only numbers with two decimal points are allowed";
   } else {
     errorFound = false;
   }
@@ -87,7 +103,8 @@ export {
   FormatDate,
   CalculateTotalDistance,
   CalculateTotalSets,
-  ConvetMinutesToHours,
+  ConvertMinutesToHours,
+  ParceNumber,
   CalculateTotalTimeSpent,
   VerifyInput,
   ShowToast,
