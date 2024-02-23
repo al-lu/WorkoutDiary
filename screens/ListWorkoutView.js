@@ -16,8 +16,9 @@ import {
   CalculateTotalDistance,
   CalculateTotalSets,
   CalculateTotalTimeSpent,
-  ConvetMinutesToHours,
+  ConvertMinutesToHours,
   FormatDate,
+  ParceNumber,
 } from "../functions/HelperFunctions";
 
 import { darkColors, lightColors } from "../styles/ColorScheme";
@@ -48,13 +49,16 @@ export default function ListWorkoutView() {
         {item.exerciseLocation === "outdoors" ? (
           <Text variant="titleMedium">
             {units.value === "km"
-              ? item.distance + " km"
-              : (item.distance / 1.609344).toFixed(2) + " miles"}
+              ? ParceNumber(item.traveledDistance) + " km"
+              : ParceNumber((item.traveledDistance / 1.609344).toFixed(2)) +
+                " miles"}
           </Text>
         ) : (
           <Text variant="titleMedium">{item.numOfSets + " sets"}</Text>
         )}
-        <Text variant="titleMedium">{ConvetMinutesToHours(item.duration)}</Text>
+        <Text variant="titleMedium">
+          {ConvertMinutesToHours(item.duration)}
+        </Text>
       </Card.Content>
     );
 

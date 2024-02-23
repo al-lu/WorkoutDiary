@@ -1,7 +1,7 @@
 export const WorkoutData = [
   {
     date: "2024-02-01",
-    distance: "5",
+    traveledDistance: "5.02",
     duration: "75",
     exerciseLocation: "outdoors",
     icon: "hockey-puck",
@@ -28,7 +28,7 @@ export const WorkoutData = [
   },
   {
     date: "2024-02-13",
-    distance: "2",
+    traveledDistance: "2.00",
     duration: "90",
     exerciseLocation: "outdoors",
     icon: "soccer",
@@ -37,7 +37,7 @@ export const WorkoutData = [
   },
   {
     date: "2024-02-17",
-    distance: "45",
+    traveledDistance: "45",
     duration: "450",
     exerciseLocation: "outdoors",
     icon: "roller-skate",
