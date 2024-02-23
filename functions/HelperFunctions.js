@@ -82,11 +82,15 @@ const VerifyInput = (input, isFloatAllowed) => {
         errorFound = true;
         errorHeading = "Decimal error";
         errorText = "Only numbers with two decimal points are allowed";
+        console.log("Error1");
+      } else {
+        errorFound = false;
       }
     } else {
       errorFound = true;
       errorHeading = "Integer error";
       errorText = "Only whole numbers are allowed";
+      console.log("Error2");
     }
   } else {
     errorFound = false;
