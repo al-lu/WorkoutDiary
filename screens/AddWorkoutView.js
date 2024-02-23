@@ -39,7 +39,7 @@ import {
 export default function AddWorkoutView() {
   // Contexts
   const { workouts, setWorkouts } = useContext(WorkoutsContext);
-  const { unit, units } = useContext(SettingsContext);
+  const { units } = useContext(SettingsContext);
   const { selectedSport, setSelectedSports, icon, setSelectedIcon } =
     useContext(SportSelectionContext);
   const { isDarkModeOn } = useContext(ThemeContext);
