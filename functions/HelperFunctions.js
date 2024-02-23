@@ -1,5 +1,3 @@
-import { ToastAndroid } from "react-native";
-
 const FormatDate = (date) => {
   // Convert string date to date obj
   newDateObject = new Date(date);
@@ -96,14 +94,6 @@ const VerifyInput = (input, isFloatAllowed) => {
   return { errorFound, errorHeading, errorText };
 };
 
-const ShowToast = () => {
-  return ToastAndroid.show(
-    "Workout added",
-    ToastAndroid.SHORT,
-    ToastAndroid.BOTTOM
-  );
-};
-
 export {
   FormatDate,
   CalculateTotalDistance,
@@ -112,5 +102,4 @@ export {
   ParceNumber,
   CalculateTotalTimeSpent,
   VerifyInput,
-  ShowToast,
 };

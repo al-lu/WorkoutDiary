@@ -27,6 +27,8 @@ const lightColors = StyleSheet.create({
     tabBarActiveTintColor: "#000000",
     tabBarInactiveTintColor: "#dedede",
     tabBarActiveBackgroundColor: "#ffffff",
+    toastLightBackgroundColor: "#1b1a1a",
+    toastLightTextColor: "#e4e4e4",
   },
 });
 
@@ -59,6 +61,8 @@ const darkColors = StyleSheet.create({
     tabBarActiveTintColor: "#000000",
     tabBarInactiveTintColor: "#dedede",
     tabBarActiveBackgroundColor: "#ffffff",
+    toastDarkBackgroundColor: "#e4e4e4",
+    toastDarkTextColor: "#1b1a1a",
   },
 });
 

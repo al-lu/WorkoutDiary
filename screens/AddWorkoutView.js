@@ -30,11 +30,8 @@ import {
 
 import { darkColors, lightColors } from "../styles/ColorScheme";
 
-import {
-  FormatDate,
-  ShowToast,
-  VerifyInput,
-} from "../functions/HelperFunctions";
+import { FormatDate, VerifyInput } from "../functions/HelperFunctions";
+import ShowToast from "../components/ShowToast";
 
 export default function AddWorkoutView() {
   // Contexts
@@ -104,7 +101,7 @@ export default function AddWorkoutView() {
     setSelectedSports("");
     setSelectedIcon("");
 
-    ShowToast();
+    ShowToast("Workout added", "LONG", isDarkModeOn);
   };
 
   // Disable "Add Workout" button if any fields are empty
